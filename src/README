@@ -1,0 +1,114 @@
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+CIS 1200 Game Project README
+PennKey: xingz126
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+
+===================
+=: Core Concepts :=
+===================
+
+- List the four core concepts, the features they implement, and why each feature
+  is an appropriate use of the concept. Incorporate the feedback you got after
+  submitting your proposal.
+
+  1. 2D Arrays: I used 2D arrays to store the two types of cells in the sudoku game board, which
+     is composed of two types of cells, one editable, and one uneditable. It is then used to create
+     the grid for the Grid class. The concepts of 2D array is used throughout the construction and
+     presentation of the sudoku in GameBody class. 2D array is preferred because it just fits the general
+     logic of this 2D board game.
+
+  2. Recursion: I used recursion in the SudokuGenerator class (specially the solve method) in order to
+     actually solve that sudoku object. It serves to use the backtracking algorithm to solve the partially
+     filled generated sudoku. The taken argument will start from 0, the base case is when the value is
+     added up to the number of hidden cells in that sudoku object. The solve function iterates over the
+     numbers from 1 to 9 and tries each one at that position. It will recursively fill in the numbers by
+     making the recursive call.
+
+  3. Testable Component: I use JUnit to test almost all the functions in the SudokuGenerator class. I want
+     to make sure that I actually created a new sudoku game that can be solved under the rule of sudoku.
+     The rows, columns, and 3x3 squares are all tested in the test class. It also makes sure that the getNum
+     and updateNum functions work correctly outside of that class. I also want to make sure that unsolved
+     sudoku should have at least one editable cell in the row, column, and 3x3 square.
+
+  4. File I/O: I used File I/O to store the name and finished time to the 'Ranking' txt file. If the player
+     is able to finish the game. There will be a new window asking for the entry of the player name. If a
+     name is entered, it will be written to the txt file. The player is able to get the sorted ranking from
+     fastest to slowest by using the 'rank' button, which will read that file and print it out in a new
+     window.
+
+===============================
+=: File Structure Screenshot :=
+===============================
+- Include a screenshot of your project's file structure. This should include
+  all of the files in your project, and the folders they are in. You can
+  upload this screenshot in your homework submission to gradescope, named
+  "file_structure.png".
+
+=========================
+=: Your Implementation :=
+=========================
+
+- Provide an overview of each of the classes in your code, and what their
+  function is in the overall game.
+  SudokuGenerator: class used to randomly generate a new partially filled sudoku that follows the sudoku rule.
+How partially depends on the difficulty percent. The next method will continue to fill until a valid puzzle is
+generated. Everytime a false number is placed, it will retry filling the cell. Each cell is represented by an
+inner class. It can be either a cell that already has a number which is not editable, or a cell that has 0 as
+num and can be updated. The solve method will solve the puzzle using the backtracking algorithm that will try
+to fill the cells while using the check method to check the validity of that entry. You are also able to get
+the value, check if editable, and check if the puzzle is completed.
+  LargeGrid: class used to initialize the large 3x3 grids. Each of the grid consists small 3x3 grid made by the
+SmallGrid class. It will be used by the Frame class to be displayed on the window.
+  SmallGrid: class used to initialize the small 3x3 grids. Similar to the LargeGrid class, it will be able to set
+up a 3x3 grid, within that grid, each cell is depended on the generated sudoku puzzle board. If it is not 0,
+then that cell will be represented by an object in the CellPresenter class. If it is 0, editable, then that
+cell will be represented by an object in the CellEditor class.
+  CellPresenter: class used to simply create a new label on that specific cell in the small grid.
+  CellEditor: class used to modify the specific cell in the small grid. It overrides the insert, delete, and change
+update in the DocumentListener interface. InsertUpdate is called when text is inserted into the CellEditor.
+RemoveUpdate is called when text is removed from the CellEditor. ChangedUpdate is called when the text in the
+CellEditor is changed in any way caused by the inert or delete. Everytime the game is actually completed by using
+the method in the SudokuGenerator class, it will attempt to initialize a new window dialog asking the name of the
+player. It will write the name and time to a txt file. Later it will ask if the player wants to play another one.
+  GameTimer: class used to track the elapsed time after the initialization of the game. It will be able to update
+the time by one second.
+  GenerateTimer: class used to create a label that will be used to display the timer in the frame. It has the
+constructor, the initialization method and the method to stop the timer.
+  ToolBar: class used to store all the buttons and timer so that they could be used by the Frame class to be
+displayed on the window. The buttons include tutorial, next, answer, rank. Tutorial button will be able to
+open up a new window dialog to provide the instructions of the game.
+  Frame: class used to combine both the objects from the LargeGrid class and from ToolBar class. It will set up
+the size, position, and the title of the window.
+  GenerateGame: class used for all the functions that the buttons are pointed to. It serves to initialize the object
+from the Frame class and create a new sudoku puzzle board. It also includes the functions for reading the txt file
+and display that ranking to a new window dialog.
+  PlayerInfo: class used to help with adding both the name and time information to the txt file.
+  RunSudoku: class that takes the GenerateGame class to actually run the game with the designated Game class.
+  SudokuTest: class used to test the core-game model, specially the generated sudoku puzzle.
+
+- Were there any significant stumbling blocks while you were implementing your
+  game (related to your design, or otherwise)?
+It was difficult to actually load the file of the current game state (2D array) to a txt file because I initially
+used an inner class that represents each cell in the board. So it creates a lot of difficulty to convert them
+back and forth from writing to reading.
+
+- Evaluate your design. Is there a good separation of functionality? How well is
+  private state encapsulated? What would you refactor, if given the chance?
+I think I seperated the functionalities to a decent extent. The private state is well encapsulated in my opinion.
+Since I literally separated the cells to prevent that the given cells will be able to be modified by the
+player. I would try to get the timer part of the game in a more precise way. I separated out the part where the
+timer will be presented as a new label on the window.
+
+========================
+=: External Resources :=
+========================
+
+- Cite any external resources (images, tutorials, etc.) that you may have used
+  while implementing your game.
+Sudoku DFS algorithm: https://www.geeksforgeeks.org/sudoku-backtracking-7/
+Do ... while loop: https://www.geeksforgeeks.org/java-do-while-loop-with-examples/
+Random generation and setting numbers, and other utilization of random implementation: stackoverflow
+Timer: https://docs.oracle.com/javase/8/docs/api/javax/swing/Timer.html
+JTextField: https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextField.html
+Dialog: https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+DocumentListener: https://docs.oracle.com/javase/8/docs/api/javax/swing/event/DocumentListener.html
