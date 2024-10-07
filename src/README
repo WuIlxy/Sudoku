@@ -1,8 +1,3 @@
-=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
-CIS 1200 Game Project README
-PennKey: xingz126
-=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
-
 ===================
 =: Core Concepts :=
 ===================
@@ -35,14 +30,6 @@ PennKey: xingz126
      name is entered, it will be written to the txt file. The player is able to get the sorted ranking from
      fastest to slowest by using the 'rank' button, which will read that file and print it out in a new
      window.
-
-===============================
-=: File Structure Screenshot :=
-===============================
-- Include a screenshot of your project's file structure. This should include
-  all of the files in your project, and the folders they are in. You can
-  upload this screenshot in your homework submission to gradescope, named
-  "file_structure.png".
 
 =========================
 =: Your Implementation :=
@@ -85,30 +72,3 @@ and display that ranking to a new window dialog.
   PlayerInfo: class used to help with adding both the name and time information to the txt file.
   RunSudoku: class that takes the GenerateGame class to actually run the game with the designated Game class.
   SudokuTest: class used to test the core-game model, specially the generated sudoku puzzle.
-
-- Were there any significant stumbling blocks while you were implementing your
-  game (related to your design, or otherwise)?
-It was difficult to actually load the file of the current game state (2D array) to a txt file because I initially
-used an inner class that represents each cell in the board. So it creates a lot of difficulty to convert them
-back and forth from writing to reading.
-
-- Evaluate your design. Is there a good separation of functionality? How well is
-  private state encapsulated? What would you refactor, if given the chance?
-I think I seperated the functionalities to a decent extent. The private state is well encapsulated in my opinion.
-Since I literally separated the cells to prevent that the given cells will be able to be modified by the
-player. I would try to get the timer part of the game in a more precise way. I separated out the part where the
-timer will be presented as a new label on the window.
-
-========================
-=: External Resources :=
-========================
-
-- Cite any external resources (images, tutorials, etc.) that you may have used
-  while implementing your game.
-Sudoku DFS algorithm: https://www.geeksforgeeks.org/sudoku-backtracking-7/
-Do ... while loop: https://www.geeksforgeeks.org/java-do-while-loop-with-examples/
-Random generation and setting numbers, and other utilization of random implementation: stackoverflow
-Timer: https://docs.oracle.com/javase/8/docs/api/javax/swing/Timer.html
-JTextField: https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextField.html
-Dialog: https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
-DocumentListener: https://docs.oracle.com/javase/8/docs/api/javax/swing/event/DocumentListener.html
