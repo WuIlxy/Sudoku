@@ -32,14 +32,6 @@
      fastest to slowest by using the 'rank' button, which will read that file and print it out in a new
      window.
 
-===============================
-=: File Structure Screenshot :=
-===============================
-- Include a screenshot of your project's file structure. This should include
-  all of the files in your project, and the folders they are in. You can
-  upload this screenshot in your homework submission to gradescope, named
-  "file_structure.png".
-
 =========================
 =: Your Implementation :=
 =========================
@@ -94,17 +86,3 @@ I think I seperated the functionalities to a decent extent. The private state is
 Since I literally separated the cells to prevent that the given cells will be able to be modified by the
 player. I would try to get the timer part of the game in a more precise way. I separated out the part where the
 timer will be presented as a new label on the window.
-
-========================
-=: External Resources :=
-========================
-
-- Cite any external resources (images, tutorials, etc.) that you may have used
-  while implementing your game.
-Sudoku DFS algorithm: https://www.geeksforgeeks.org/sudoku-backtracking-7/
-Do ... while loop: https://www.geeksforgeeks.org/java-do-while-loop-with-examples/
-Random generation and setting numbers, and other utilization of random implementation: stackoverflow
-Timer: https://docs.oracle.com/javase/8/docs/api/javax/swing/Timer.html
-JTextField: https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextField.html
-Dialog: https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
-DocumentListener: https://docs.oracle.com/javase/8/docs/api/javax/swing/event/DocumentListener.html
